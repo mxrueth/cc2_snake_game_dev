@@ -3,6 +3,9 @@
 Prof. Dr.-Ing. Angela Brennecke | a.brennecke@filmuniversitaet.de | Film University Babelsberg *KONRAD WOLF*   
 Anna Brauwers | anna.s.brauwers@filmuniversitaet.de | Film University Babelsberg *KONRAD WOLF*
 
+
+Max Stinkt! 
+
 ---
 
 # Snake Game Development 
