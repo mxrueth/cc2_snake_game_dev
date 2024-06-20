@@ -70,5 +70,5 @@ float ofSnake::getUpdateInterval() const {
 
 void ofSnake::calculateUpdateInterval() {
     int length = body.size();
-    updateInterval = 0.3f * exp(-0.05f * length); // Exponential decrease, adjust the factor for desired speed
+    updateInterval = 0.3f * exp(-0.03f * length); // Exponential decrease, adjust the factor for desired speed
 }
