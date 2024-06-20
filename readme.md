@@ -4,7 +4,16 @@ Prof. Dr.-Ing. Angela Brennecke | a.brennecke@filmuniversitaet.de | Film Univers
 Anna Brauwers | anna.s.brauwers@filmuniversitaet.de | Film University Babelsberg *KONRAD WOLF*
 
 
-Max Stinkt! 
+# TODO
+- drehendes Triangle als kopf
+  - dreht sich wenn pfeiltasten gedreckt wird
+
+- VFX effekt (blitz ding) wenn food eingesammelt wird (oder etwas anderes)
+
+- Klassen strukturieren
+  - game klasse machen
+  - teils code aus Ofapp auslagern 
+  - schlange vergroessen wenn food eingesammelt wird
 
 ---
 
