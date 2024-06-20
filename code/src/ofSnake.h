@@ -9,23 +9,28 @@ public:
 
     ofSnake();
     ~ofSnake();
-
-    int foo = 6;
-
-        
-
-    float xSpeed;
-    float ySpeed;
-    
+ 
     int cellSize = 50;
 
-    ofColor colorIO;
+    ofColor color;
 
-    void updateSnake();
-    void drawSnake();
+    void update();
+    void draw();
+    void grow();
     void setDir(int x, int y);
-    bool eat(ofVec2f foodPos);
+    bool checkCollision();
 
-    ofVec2f myPos{ 0,0 };
+    void setUpdateInterval(float interval);
+    float getUpdateInterval() const;
+
+    vector<ofPoint> body;
+
+    private:
+
+    ofPoint direction;
+    ofPoint lastTail;
+    float lastUpdateTime;
+    float updateInterval;
+
 
 };

@@ -21,10 +21,15 @@ class ofApp : public ofBaseApp{
 		void update();
 		void draw();
 
+		//Joel stinkt ;P
 
 		void keyPressed(int key);
-		
-    ofSnake mySnake{};
-    ofFood myFood{};
+		void increaseSpeed();
+
+
+	private:
+		ofSnake snake;
+		ofFood food;
+		bool gameOver;
     
 };

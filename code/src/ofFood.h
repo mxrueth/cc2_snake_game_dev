@@ -10,13 +10,15 @@ public:
     ofFood();
     ~ofFood();
 
-    int scl = 50;
-    
-    ofColor color;
-    ofVec2f myPos{};
 
+    void draw();
     void pickLocation();
-    void drawFood();
+    
+    ofPoint pos;
+    ofColor color;
+    int scl = 50;
+
+
 
 
 };

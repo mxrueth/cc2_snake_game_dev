@@ -7,29 +7,36 @@ void ofApp::setup(){
     // Yet, think about this approach? What are the pros and cons
     // of using the frame rate and what other approach could be
     // used instead?
-	ofSetFrameRate(10);
+	//ofSetFrameRate(30);
     
 	ofBackground(0);
+	gameOver = false;
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
-	
-	
-	mySnake.updateSnake();
-
-	if (mySnake.eat(myFood.myPos)) {
-		myFood.pickLocation();
-        
+	if (!gameOver) {
+		snake.update();
+		if (snake.body.front()==food.pos) {
+			snake.grow();
+			food.pickLocation();
+		}
+		if (snake.checkCollision()) {
+			gameOver = true;
+		}
 	}
-
+	increaseSpeed();
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    
-	mySnake.drawSnake();
-	myFood.drawFood();
+	if (gameOver) {
+		ofDrawBitmapString("Game Over", ofGetWidth() / 2 - 50, ofGetHeight() / 2);
+	}
+	else {
+		snake.draw();
+		food.draw();
+	}
 }
 
 
@@ -40,22 +47,27 @@ void ofApp::keyPressed(int key){
 	switch (key) {
 
 	case OF_KEY_LEFT: // left
-		mySnake.setDir(-1, 0);
+		snake.setDir(-1, 0);
 		break;
 	case OF_KEY_RIGHT: // right
-		mySnake.setDir(1, 0);
+		snake.setDir(1, 0);
 		break;
 	case OF_KEY_UP: // up
-		mySnake.setDir(0, -1);
+		snake.setDir(0, -1);
 		break;
 	case OF_KEY_DOWN: // down
-		mySnake.setDir(0, 1);
+		snake.setDir(0, 1);
 		break;
 	}
 }
 
 
-
+void ofApp::increaseSpeed() {
+	float currentInterval = snake.getUpdateInterval();
+	if (currentInterval > 0.01f) { // Set a minimum interval to prevent the game from becoming too fast
+		snake.setUpdateInterval(currentInterval - 0.0001f); // Decrease the interval to increase speed
+	}
+}
 
 
 
