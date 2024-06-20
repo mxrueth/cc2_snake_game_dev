@@ -136,6 +136,13 @@ fabric.properties
 .idea/caches/build_file_checksums.ser
 assignment03/asci/.idea/misc.xml
 assignment03/asci/.idea/vcs.xml
+code/bin/code.exe
+code/bin/code_debug.exe
+code/bin/code_debug.pdb
+code/code.sln
 code/config.make
-code/Makefile
-code/Makefile
+code/config.make
+code/icon.rc
+code/config.make
+code/config.make
+code/addons.make
