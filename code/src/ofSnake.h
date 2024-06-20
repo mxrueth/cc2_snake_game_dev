@@ -22,6 +22,7 @@ public:
 
     void setUpdateInterval(float interval);
     float getUpdateInterval() const;
+    void calculateUpdateInterval();
 
     vector<ofPoint> body;
 

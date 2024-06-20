@@ -11,6 +11,7 @@ void ofApp::setup(){
     
 	ofBackground(0);
 	gameOver = false;
+	score = 0;
 }
 
 //--------------------------------------------------------------
@@ -18,6 +19,7 @@ void ofApp::update(){
 	if (!gameOver) {
 		snake.update();
 		if (snake.body.front()==food.pos) {
+			score += 50;
 			snake.grow();
 			food.pickLocation();
 		}
@@ -25,7 +27,6 @@ void ofApp::update(){
 			gameOver = true;
 		}
 	}
-	increaseSpeed();
 }
 
 //--------------------------------------------------------------
@@ -36,6 +37,8 @@ void ofApp::draw(){
 	else {
 		snake.draw();
 		food.draw();
+		ofDrawBitmapString("Score:"+ofToString(score), 50, ofGetHeight() - 25);
+
 	}
 }
 
@@ -62,12 +65,7 @@ void ofApp::keyPressed(int key){
 }
 
 
-void ofApp::increaseSpeed() {
-	float currentInterval = snake.getUpdateInterval();
-	if (currentInterval > 0.01f) { // Set a minimum interval to prevent the game from becoming too fast
-		snake.setUpdateInterval(currentInterval - 0.0001f); // Decrease the interval to increase speed
-	}
-}
+
 
 
 

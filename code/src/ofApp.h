@@ -25,11 +25,12 @@ class ofApp : public ofBaseApp{
 
 		void keyPressed(int key);
 		void increaseSpeed();
-
+		
 
 	private:
 		ofSnake snake;
 		ofFood food;
 		bool gameOver;
-    
+		int score;
+
 };

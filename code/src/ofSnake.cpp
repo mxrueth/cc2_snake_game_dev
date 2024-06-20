@@ -3,7 +3,7 @@
 
 
 ofSnake::ofSnake()
-    : updateInterval(0.5f), lastUpdateTime(0.0f) {
+    : updateInterval(0.3f), lastUpdateTime(0.0f) {
     direction.set(1, 0);
     body.push_back(ofPoint(0, 0));
     
@@ -41,6 +41,7 @@ void ofSnake::draw() {
 
 void ofSnake::grow() {
     body.push_back(lastTail);
+    calculateUpdateInterval();
 }
 
 void ofSnake::setDir(int x, int y) {
@@ -65,4 +66,9 @@ void ofSnake::setUpdateInterval(float interval) {
 
 float ofSnake::getUpdateInterval() const {
     return updateInterval;
+}
+
+void ofSnake::calculateUpdateInterval() {
+    int length = body.size();
+    updateInterval = 0.3f * exp(-0.05f * length); // Exponential decrease, adjust the factor for desired speed
 }
