@@ -146,3 +146,5 @@ code/icon.rc
 code/config.make
 code/config.make
 code/addons.make
+code/Makefile
+
