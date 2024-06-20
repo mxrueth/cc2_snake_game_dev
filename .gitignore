@@ -148,3 +148,4 @@ code/config.make
 code/addons.make
 code/Makefile
 
+code/bin/data/.gitkeep
