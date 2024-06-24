@@ -7,7 +7,7 @@ void ofApp::setup(){
     // Yet, think about this approach? What are the pros and cons
     // of using the frame rate and what other approach could be
     // used instead?
-	//ofSetFrameRate(30);
+	ofSetFrameRate(60);
     
 	ofBackground(0);
 	gameOver = false;
