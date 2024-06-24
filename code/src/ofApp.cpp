@@ -40,6 +40,8 @@ void ofApp::draw(){
 		ofDrawBitmapString("Score:"+ofToString(score), 50, ofGetHeight() - 25);
 
 	}
+    //temp for testing
+    flash.spawn();
 }
 
 
@@ -65,7 +67,16 @@ void ofApp::keyPressed(int key){
 }
 
 
+void ofApp::mouseDragged(int x, int y, int button){
 
+    flash.generatePoints(x, y);
+}
+
+//--------------------------------------------------------------
+void ofApp::mousePressed(int x, int y, int button){
+    
+    flash.generatePoints(x, y);
+}
 
 
 

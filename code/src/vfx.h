@@ -8,11 +8,18 @@ public:
     
     vfx();
     ~vfx();
-
-    float test;
+    void spawn();
+    void generatePoints(int x, int y);
     
-    void setup();
-    void update();
-    void draw();
+private:
+    bool pointsGenerated;
+    //bool generatePoints = false;
+    int pointsPerClick = 3;
+    int counterPointsGenerated;
+    //ofVec2f vec;
+    ofVec2f vecAtMouse;
+    //std::vector<ofVec2f> allpoints;
+    ofPolyline line;
+    vector<ofVec2f> allVectors;
     
 };

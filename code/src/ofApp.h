@@ -3,6 +3,7 @@
 #include "ofMain.h"
 #include "ofSnake.h"
 #include "ofFood.h"
+#include "vfx.h"
 
 
 // TODO: Refactoring
@@ -25,6 +26,8 @@ class ofApp : public ofBaseApp{
 
 		void keyPressed(int key);
 		void increaseSpeed();
+        void mouseDragged(int x, int y, int button);
+        void mousePressed(int x, int y, int button);
 		
 
 	private:
@@ -32,5 +35,8 @@ class ofApp : public ofBaseApp{
 		ofFood food;
 		bool gameOver;
 		int score;
+    
+        vfx flash;
 
-};
+}
+;
