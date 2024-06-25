@@ -21,30 +21,30 @@ class ofApp : public ofBaseApp{
 	
 		void setup();
 		void update();
-		void draw();
-
-		//Joel stinkt ;P
+        void draw();
 
 		void keyPressed(int key);
         void increaseSpeed();
-        void gridGeneratePoints();
-        void gridDraw();
-		void flashSetup(int numOfFlashes);
+    
         void mouseDragged(int x, int y, int button);
         void mousePressed(int x, int y, int button);
     
         vector<ofVec2f> allVectors;
-    std::vector<vfx> flashes;
+        std::vector<vfx> flashes;
 		
 
 	private:
+        //vfx
+        void gridGeneratePoints();
+        void gridDraw();
+        void vfxDraw();
+        void flashSetup(int numOfFlashes);
+    
 		ofSnake snake;
 		ofFood food;
 		bool gameOver;
 		int score;
     
-        vfx flash1;
-        vfx flash2;
-
+    
 }
 ;

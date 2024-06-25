@@ -93,7 +93,3 @@ void vfx::create(vector<ofVec2f>& allVectors){
     }
         
 }
-
-void vfx::draw(){
-    
-}
