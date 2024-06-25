@@ -39,6 +39,10 @@ void ofSnake::draw() {
     }
 }
 
+ofPoint ofSnake::getPosHead() {
+    return body.front();
+}
+
 void ofSnake::grow() {
     body.push_back(lastTail);
     calculateUpdateInterval();

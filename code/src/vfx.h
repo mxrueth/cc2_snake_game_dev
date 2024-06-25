@@ -9,7 +9,7 @@ public:
     ~vfx();
     
     void grid();
-    void create(vector<ofVec2f>& allVectors);
+    void create(vector<ofVec2f>& allVectors, ofPoint headPos);
     void generatePoints();
     
     bool finished;

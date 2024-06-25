@@ -23,8 +23,11 @@ public:
     void setUpdateInterval(float interval);
     float getUpdateInterval() const;
     void calculateUpdateInterval();
-
+    
+    ofPoint getPosHead();
+    
     vector<ofPoint> body;
+    
 
     private:
 

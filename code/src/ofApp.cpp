@@ -7,7 +7,7 @@ void ofApp::setup(){
     // Yet, think about this approach? What are the pros and cons
     // of using the frame rate and what other approach could be
     // used instead?
-	ofSetFrameRate(10);
+	ofSetFrameRate(15);
 	ofBackground(0);
     
 	gameOver = false;
@@ -41,10 +41,10 @@ void ofApp::gridDraw(){
     }
 }
 //VFX
-void ofApp::vfxDraw() {
+void ofApp::vfxDraw(ofPoint headPos) {
     if(!flashes.empty()) {
         for(auto& flash : flashes) {
-            flash.create(allVectors);
+            flash.create(allVectors, headPos);
         }
         // Remove all finished flashes
         // Go through all flashes and check if boolean is set to true
@@ -76,7 +76,7 @@ void ofApp::update(){
 void ofApp::draw(){
     
     gridDraw();
-    vfxDraw();
+    vfxDraw(snake.getPosHead());
     
 	if (gameOver) {
 		ofDrawBitmapString("Game Over", ofGetWidth() / 2 - 50, ofGetHeight() / 2);

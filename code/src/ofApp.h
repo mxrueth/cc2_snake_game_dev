@@ -37,7 +37,7 @@ class ofApp : public ofBaseApp{
         //vfx
         void gridGeneratePoints();
         void gridDraw();
-        void vfxDraw();
+        void vfxDraw(ofPoint headPos);
         void flashSetup(int numOfFlashes);
     
 		ofSnake snake;
