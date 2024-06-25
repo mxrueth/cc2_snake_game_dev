@@ -1,9 +1,9 @@
 #include "ofSnake.h"
 
-
+float gameSpeed = 0.2f;
 
 ofSnake::ofSnake()
-    : updateInterval(0.3f), lastUpdateTime(0.0f) {
+    : updateInterval(gameSpeed), lastUpdateTime(0.0f) {
     direction.set(1, 0);
     body.push_back(ofPoint(0, 0));
     
@@ -70,5 +70,5 @@ float ofSnake::getUpdateInterval() const {
 
 void ofSnake::calculateUpdateInterval() {
     int length = body.size();
-    updateInterval = 0.3f * exp(-0.03f * length); // Exponential decrease, adjust the factor for desired speed
+    updateInterval = gameSpeed * exp(-gameSpeed * length); // Exponential decrease, adjust the factor for desired speed
 }

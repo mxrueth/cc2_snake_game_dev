@@ -10,6 +10,7 @@ void ofApp::setup(){
 	ofSetFrameRate(60);
     
 	ofBackground(0);
+    flash.generatePoints();
 	gameOver = false;
 	score = 0;
 }
@@ -31,6 +32,10 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
+    
+    //temp for testing
+    flash.spawn();
+    
 	if (gameOver) {
 		ofDrawBitmapString("Game Over", ofGetWidth() / 2 - 50, ofGetHeight() / 2);
 	}
@@ -40,8 +45,7 @@ void ofApp::draw(){
 		ofDrawBitmapString("Score:"+ofToString(score), 50, ofGetHeight() - 25);
 
 	}
-    //temp for testing
-    flash.spawn();
+   
 }
 
 
@@ -69,13 +73,13 @@ void ofApp::keyPressed(int key){
 
 void ofApp::mouseDragged(int x, int y, int button){
 
-    flash.generatePoints(x, y);
+
 }
 
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button){
     
-    flash.generatePoints(x, y);
+   // flash.generatePoints(x, y);
 }
 
 

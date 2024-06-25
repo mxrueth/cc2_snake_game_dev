@@ -9,7 +9,7 @@ public:
     vfx();
     ~vfx();
     void spawn();
-    void generatePoints(int x, int y);
+    void generatePoints();
     
 private:
     bool pointsGenerated;
@@ -21,5 +21,6 @@ private:
     //std::vector<ofVec2f> allpoints;
     ofPolyline line;
     vector<ofVec2f> allVectors;
+    vector<ofVec2f> originPoints;
     
 };

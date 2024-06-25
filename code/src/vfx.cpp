@@ -13,14 +13,24 @@ vfx::~vfx()
     
 }
 
-//when mouse dragged
-void vfx::generatePoints(int x, int y)
+
+void vfx::generatePoints()
 {
+
+    
+        for (int i = 0; i < ofGetWidth(); i= i+25) {
+            for (int k = 0; k < ofGetHeight(); k= k+25) {
+                ofVec2f vec(i,k);
+                allVectors.push_back(vec);
+            }
+        }
+
+    
     //if(counterPointsGenerated < 50)
     //{
-    pointsGenerated = true;
+ //   pointsGenerated = true;
     //}
-        vecAtMouse.set(x, y);
+ //       vecAtMouse.set(x, y);
         
     //hmm doesn't help avoiding the first point being in the corner...why?
     //    if(x > 0) {
@@ -32,6 +42,12 @@ void vfx::generatePoints(int x, int y)
 
 
 void vfx::spawn(){
+    
+    ofSetColor(50, 50, 50);
+    for (int i = 0; i < allVectors.size(); i++) {
+        ofRectangle(allVectors[i].x, allVectors[i].y, 5,5);
+    }
+    
     //Design
     //create random points around the mouse and write them to array
     //OR create grid of points in the beginning
@@ -68,12 +84,34 @@ void vfx::spawn(){
                 ofDrawCircle(newVec.x, newVec.y, 7);
                 
     }
+    
+    
+    
     //sort array by distance for the first moving circles. Get the target for the first circle, the second target for the second circle...
     //new idea: first sort, then create an array just with X goal points from that. so the closest ones...
     //OR create a pair vector...we take the origin and one of the X goals...
     //vielleicht am besten eine circle class machen?
         //klasse referenz zum array und vielleicht nur ein weg durchs array
     //
+    
+    //grid, rect based, vielleicht doppelt so fein wie spielgrid?
+    //sortiere array nach origin point vom player
+        
+    
+    //alle 0.15 sek:
+    //for 6 times:
+        //fuer jeden einzelnen blitzanim, mache eine kopie des arrays
+            //waehle einen der ersten 6 punkte aus und mache diesen zum origin point
+            //sortiere das array abhaneging vom origin point
+            //verbinden den ersten und Xten punkt mit einer linie
+                //spaeter: X kann immer groesser oder imm kleiner werden
+            //speichere den zweiten punkt als origin point (wahrscheinlich brauche ich wenn ich keine klasse mache hier vec opflash1, opflash2...
+            //loesche die beiden punkte aus dem urpsruenglichen array, indem ich die koordinaten vergleiche mit dem urpsruenglcihen array und sie rausnehme
+    //wiederholt sich
+    
+    //zeichne alle punkte des arrays
+    
+    
     //allVectors
     if(allVectors.size()>0)
     {
@@ -83,8 +121,12 @@ void vfx::spawn(){
             return a.distance(originVec) < b.distance(originVec);
         });
         ofVec2f closestVec(allVectors[0].x, allVectors[0].y);
-        //allVectors.
-        ofLine(originVec.x, originVec.y, closestVec.x, closestVec.y);
+        
+        for (int i =0; i<5; i++) {
+            originPoints.push_back(closestVec);
+            // allVectors.erase(allVectors.begin());
+            ofLine(originVec.x, originVec.y, closestVec.x, closestVec.y);
+        }
     }
         
     for (ofVec2f existingVec : allVectors)
