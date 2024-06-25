@@ -6,6 +6,7 @@
 #include "vfx.h"
 
 
+
 // TODO: Refactoring
 // This class works but does not follow the best
 // code design approach if you think of separating
@@ -25,9 +26,15 @@ class ofApp : public ofBaseApp{
 		//Joel stinkt ;P
 
 		void keyPressed(int key);
-		void increaseSpeed();
+        void increaseSpeed();
+        void gridGeneratePoints();
+        void gridDraw();
+		void flashSetup(int numOfFlashes);
         void mouseDragged(int x, int y, int button);
         void mousePressed(int x, int y, int button);
+    
+        vector<ofVec2f> allVectors;
+    std::vector<vfx> flashes;
 		
 
 	private:
@@ -36,7 +43,8 @@ class ofApp : public ofBaseApp{
 		bool gameOver;
 		int score;
     
-        vfx flash;
+        vfx flash1;
+        vfx flash2;
 
 }
 ;

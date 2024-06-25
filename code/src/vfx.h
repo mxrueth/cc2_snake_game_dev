@@ -8,8 +8,11 @@ public:
     
     vfx();
     ~vfx();
-    void spawn();
+    void grid();
+    void create(vector<ofVec2f>& allVectors);
+    void draw();
     void generatePoints();
+    bool finished;
     
 private:
     bool pointsGenerated;
@@ -20,7 +23,15 @@ private:
     ofVec2f vecAtMouse;
     //std::vector<ofVec2f> allpoints;
     ofPolyline line;
-    vector<ofVec2f> allVectors;
-    vector<ofVec2f> originPoints;
+    
+    
+    vector<ofVec2f> originPoints; //TODO: remove?
+    
+    
+    ofVec2f lastEndVec;
+    bool executedOnce = false;
+    
+    int stepper = 52;
+    int stepperMultiplier = 5;
     
 };
