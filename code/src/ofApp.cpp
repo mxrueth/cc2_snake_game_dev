@@ -169,11 +169,14 @@ void ofApp::spawnFood(float speed) {
     lastUpdateTime = currentTime;
 
     float r = ofRandom(1);
-    if (r > 0.5) {
+    if (r > 0.666) {
         foods.push_back(new ofApple());
     }
-    else {
+    else if (r < 0.666 && r > 0.333){
         foods.push_back(new ofFood());
+    }
+    else {
+        foods.push_back(new ofBanana());
     }
 }
 

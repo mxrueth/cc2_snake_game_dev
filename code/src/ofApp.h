@@ -4,6 +4,7 @@
 #include "ofSnake.h"
 #include "ofFood.h"
 #include "ofApple.h"
+#include "ofBanana.h"
 #include "vfx.h"
 
 
