@@ -70,7 +70,7 @@ void ofApp::vfxDraw(ofPoint position) {
 void ofApp::update(){
 	if (!gameOver) {
 		snake.update();
-        spawnFood(2.5);
+        spawnFood(0.35);
 
 		if (snake.checkCollision()) {
 			gameOver = true;
