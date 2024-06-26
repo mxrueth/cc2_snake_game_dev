@@ -11,11 +11,9 @@ void ofApp::setup(){
 	ofBackground(0);
     
 	gameOver = false;
-	score = 0;
-    
+	score = 0;    
     //VFX
     gridGeneratePoints();
-    //flashSetup(7);
 }
 //--------------------------------------------------------------
 
@@ -49,7 +47,7 @@ void ofApp::gridDraw(){
 //VFX, pass the grid and snake position to be used for the flash animation
 void ofApp::vfxDraw(ofPoint position) {
     if(flashes.size() <= 0) {
-        flashSetup(7);
+        flashSetup(9);
     }else{
         for(auto& flash : flashes) {
             flash.animate(allVectors, position);

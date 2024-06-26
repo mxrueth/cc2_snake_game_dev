@@ -1,6 +1,6 @@
 #include "ofSnake.h"
 
-float gameSpeed = 0.2f;
+float gameSpeed = 0.175f;
 //float gameSpeed = 0.1;
 //float gameSpeed = 0.05;
 
