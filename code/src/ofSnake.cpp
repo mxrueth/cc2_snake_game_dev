@@ -1,6 +1,8 @@
 #include "ofSnake.h"
 
 float gameSpeed = 0.2f;
+//float gameSpeed = 0.1;
+//float gameSpeed = 0.05;
 
 ofSnake::ofSnake()
     : updateInterval(gameSpeed), lastUpdateTime(0.0f) {
