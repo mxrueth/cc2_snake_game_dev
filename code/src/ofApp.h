@@ -42,7 +42,8 @@ class ofApp : public ofBaseApp{
     
 		ofSnake snake;
 		ofFood food;
-		bool gameOver;
+        bool gameOver;
+		bool collectedFood;
 		int score;
     
     

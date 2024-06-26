@@ -15,11 +15,11 @@ void ofApp::setup(){
     
     //VFX
     gridGeneratePoints();
-    flashSetup(7);
+    //flashSetup(7);
 }
+//--------------------------------------------------------------
 
-
-//VFX
+//VFX, create the grid
 void ofApp::gridGeneratePoints()
 {
     for (int i = 0; i < ofGetWidth(); i= i+50) {
@@ -28,9 +28,15 @@ void ofApp::gridGeneratePoints()
             float ran2 = ofRandom(100);
             ofVec2f vec(i+ran1,k+ran2);
             //ofVec2f vec(i,k);
-            allVectors.push_back(vec); //TODO: den vector in der ofApp kreiieren und als referenz passen? damt der von allen flash geteilt wird
+            allVectors.push_back(vec);
         }
     }
+}
+//VFX
+void ofApp::flashSetup(int numberOfFlashes){
+     for(int i = 0; i < numberOfFlashes; ++i) {
+         flashes.push_back(vfx());
+     }
 }
 //VFX
 void ofApp::gridDraw(){
@@ -40,18 +46,24 @@ void ofApp::gridDraw(){
         ofDrawRectangle(allVectors[i].x, allVectors[i].y, 3,3);
     }
 }
-//VFX
-void ofApp::vfxDraw(ofPoint headPos) {
-    if(!flashes.empty()) {
+//VFX, pass the grid and snake position to be used for the flash animation
+void ofApp::vfxDraw(ofPoint position) {
+    if(flashes.size() <= 0) {
+        flashSetup(7);
+    }else{
         for(auto& flash : flashes) {
-            flash.create(allVectors, headPos);
+            flash.animate(allVectors, position);
+            if(flash.finished) {
+                collectedFood = false;
+            }
         }
         // Remove all finished flashes
-        // Go through all flashes and check if boolean is set to true
+        // Go through all flashes and check if the "finished" boolean is set to true
         auto newEnd = std::remove_if(flashes.begin(), flashes.end(), [](const vfx& flash) {
             return flash.finished;
         });
         flashes.erase(newEnd, flashes.end());
+        
     }
 }
 
@@ -64,6 +76,7 @@ void ofApp::update(){
 			score += 50;
 			snake.grow();
 			food.pickLocation();
+            collectedFood = true; //run VFX
 		}
 		if (snake.checkCollision()) {
 			gameOver = true;
@@ -76,7 +89,10 @@ void ofApp::update(){
 void ofApp::draw(){
     
     gridDraw();
-    vfxDraw(snake.getPosHead());
+    if(collectedFood)
+    {
+        vfxDraw(snake.getPosHead());
+    }
     
 	if (gameOver) {
 		ofDrawBitmapString("Game Over", ofGetWidth() / 2 - 50, ofGetHeight() / 2);
@@ -85,18 +101,8 @@ void ofApp::draw(){
 		snake.draw();
 		food.draw();
 		ofDrawBitmapString("Score:"+ofToString(score), 50, ofGetHeight() - 25);
-
 	}
-   
 }
-void ofApp::flashSetup(int numberOfFlashes){
-     for(int i = 0; i < numberOfFlashes; ++i) {
-         cout << "setup" << "\n";
-         flashes.push_back(vfx());
-     }
-}
-
-
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
@@ -115,8 +121,9 @@ void ofApp::keyPressed(int key){
 	case OF_KEY_DOWN: // down
 		snake.setDir(0, 1);
 		break;
-    case OF_KEY_RETURN: // down
-        flashSetup(5);
+    case OF_KEY_RETURN: // Cheat to trigger vfx
+        vfxDraw(snake.getPosHead());
+        collectedFood = true;
         break;
 	}
 }
