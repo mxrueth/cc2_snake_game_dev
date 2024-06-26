@@ -16,6 +16,7 @@ ofSnake::~ofSnake() {
 
 void ofSnake::update() {
     float currentTime = ofGetElapsedTimef();
+
     if (currentTime - lastUpdateTime < updateInterval) {
         return; // Not enough time has passed, so skip this update
     }

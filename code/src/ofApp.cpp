@@ -70,22 +70,38 @@ void ofApp::vfxDraw(ofPoint position) {
 void ofApp::update(){
 	if (!gameOver) {
 		snake.update();
-		if (snake.body.front()==food.pos) {
-			score += 50;
-			snake.grow();
-			food.pickLocation();
-            collectedFood = true; //run VFX
-		}
+        spawnFood(2.5);
+
 		if (snake.checkCollision()) {
 			gameOver = true;
 		}
+
+
+        for (auto it = foods.begin(); it != foods.end(); ) {
+            ofFood* food = *it;
+            if (snake.body.front() == food->getPosition()) {
+                score += 50;
+                snake.grow();
+                collectedFood = true; // Run VFX
+
+                // Remove the item from the vector and delete it if necessary
+                it = foods.erase(it);
+                delete food; // Assuming ownership and responsibility to delete
+            }
+            else {
+                ++it;
+            }
+        }
+
 	}
 }
 
 
 //--------------------------------------------------------------
 void ofApp::draw(){
+
     
+
     gridDraw();
     if(collectedFood)
     {
@@ -97,7 +113,11 @@ void ofApp::draw(){
 	}
 	else {
 		snake.draw();
-		food.draw();
+
+        for (ofFood* food : foods) {
+            food->draw();
+        }
+		
 		ofDrawBitmapString("Score:"+ofToString(score), 50, ofGetHeight() - 25);
 	}
 }
@@ -139,4 +159,21 @@ void ofApp::mousePressed(int x, int y, int button){
 }
 
 
+void ofApp::spawnFood(float speed) {
+    float currentTime = ofGetElapsedTimef();
+
+    if (currentTime - lastUpdateTime < speed) {
+        return; // Not enough time has passed, so skip this update
+    }
+
+    lastUpdateTime = currentTime;
+
+    float r = ofRandom(1);
+    if (r > 0.5) {
+        foods.push_back(new ofApple());
+    }
+    else {
+        foods.push_back(new ofFood());
+    }
+}
 

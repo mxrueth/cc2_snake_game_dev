@@ -8,15 +8,24 @@ class ofFood {
 public:
 
     ofFood();
-    ~ofFood();
+
+    virtual ~ofFood() = default;
 
 
     void draw();
+    virtual void shape();
     void pickLocation();
     
-    ofPoint pos;
-    ofColor color;
-    int scl = 50;
+    glm::vec2 getPosition();
+  
+protected:
+    glm::vec3 color;
+    glm::vec2 pos;
+    int scl;
+
+private:
+
+
 
 
 

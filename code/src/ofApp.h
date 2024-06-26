@@ -3,6 +3,7 @@
 #include "ofMain.h"
 #include "ofSnake.h"
 #include "ofFood.h"
+#include "ofApple.h"
 #include "vfx.h"
 
 
@@ -24,14 +25,14 @@ class ofApp : public ofBaseApp{
         void draw();
 
 		void keyPressed(int key);
-        void increaseSpeed();
-    
+
         void mouseDragged(int x, int y, int button);
         void mousePressed(int x, int y, int button);
     
         vector<ofVec2f> allVectors;
         std::vector<vfx> flashes;
 		
+        void spawnFood(float speed);
 
 	private:
         //vfx
@@ -41,10 +42,15 @@ class ofApp : public ofBaseApp{
         void flashSetup(int numOfFlashes);
     
 		ofSnake snake;
-		ofFood food;
+		
+
+        vector<ofFood*> foods;
+
         bool gameOver;
 		bool collectedFood;
 		int score;
+
+        float lastUpdateTime = 0.0;
     
     
 }

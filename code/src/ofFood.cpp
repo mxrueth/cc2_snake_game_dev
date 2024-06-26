@@ -1,9 +1,10 @@
 #include "ofFood.h"
 
 
-ofFood::ofFood() {
+ofFood::ofFood()
+:scl{50}, color{250,0,50}
+{
     
-    color.set(250, 0, 50);
     
     // set the first position of food randomly
     // otherwise food and snake have the same pos at (0,0) which leads to an error
@@ -12,9 +13,9 @@ ofFood::ofFood() {
     
 }
 
-ofFood::~ofFood() {
 
-}
+
+
 
 
 void ofFood::pickLocation() {
@@ -30,7 +31,17 @@ void ofFood::pickLocation() {
 
 
 void ofFood::draw() {
-    ofSetColor(color);
-    ofDrawRectangle(pos.x,pos.y, scl, scl);
+    ofSetColor(color.x,color.y,color.z);
+    shape();
+}
+
+
+void ofFood::shape() {
+    ofDrawRectangle(pos.x, pos.y, scl, scl);
+}
+
+
+glm::vec2 ofFood::getPosition() {
+    return pos;
 }
 
