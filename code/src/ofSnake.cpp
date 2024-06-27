@@ -37,14 +37,16 @@ void ofSnake::update() {
 
 void ofSnake::draw() {
     ofSetColor(color);
-    int newSize = cellSize * 1.5;
+    int newSize = cellSize * 1.25;
 
     //for (auto& segment : body) {
         //ofDrawRectangle(segment.x, segment.y, cellSize, cellSize);
     //}
 
     for (auto it = body.begin() + 1; it != body.end(); ++it) {
-        ofDrawRectangle(it->x, it->y, cellSize, cellSize);
+        //ofDrawRectangle(it->x, it->y, cellSize, cellSize);
+        ofDrawRectRounded(glm::vec2(it->x,it->y), cellSize, cellSize, 10);
+
     }
 
 
