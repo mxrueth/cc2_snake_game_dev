@@ -10,6 +10,11 @@ void ofApp::setup(){
 	ofSetFrameRate(10);
     
 	ofBackground(0);
+
+	// Setze die Position, Größe und Farbe der Schlange
+	//snake.myPos = ofPoint(100, 100);
+	//snake.cellSize = 20;
+	//snake.colorIO = ofColor::green;
 }
 
 //--------------------------------------------------------------
@@ -37,21 +42,7 @@ void ofApp::draw(){
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
 	
-	switch (key) {
-
-	case OF_KEY_LEFT: // left
-		mySnake.setDir(-1, 0);
-		break;
-	case OF_KEY_RIGHT: // right
-		mySnake.setDir(1, 0);
-		break;
-	case OF_KEY_UP: // up
-		mySnake.setDir(0, -1);
-		break;
-	case OF_KEY_DOWN: // down
-		mySnake.setDir(0, 1);
-		break;
-	}
+	mySnake.keyPressed(key); // Weiterleiten der Tastendrücke an die Schlange
 }
 
 

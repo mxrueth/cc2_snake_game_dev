@@ -2,6 +2,13 @@
 
 #include "ofMain.h"
 
+enum Direction {
+    UP,
+    DOWN,
+    LEFT,
+    RIGHT
+};
+
 
 class ofSnake {
 
@@ -19,7 +26,7 @@ public:
     
     int cellSize = 50;
 
-    ofColor colorIO;
+    
 
     void updateSnake();
     void drawSnake();
@@ -27,5 +34,15 @@ public:
     bool eat(ofVec2f foodPos);
 
     ofVec2f myPos{ 0,0 };
+
+    int snakeAngle = 0;
+
+    void keyPressed(int key);
+
+    // Attribute
+    ofColor colorIO;
+   // ofPoint myPos;
+    //float cellSize;
+    int direction = UP; // Anfangsrichtung
 
 };

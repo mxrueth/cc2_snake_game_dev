@@ -30,14 +30,65 @@ void ofSnake::updateSnake() {
 
 }
 
-
-void ofSnake::drawSnake() {
-
-    ofSetColor(colorIO);
-    ofDrawRectangle(myPos.x, myPos.y, cellSize, cellSize);
+void ofSnake::keyPressed(int key) {
+    std::cout << "keypressed: " <<key << std::endl;
+    if (key == OF_KEY_UP) {
+        direction = UP;
+        setDir(0, -1);
+    }
+    else if (key == OF_KEY_DOWN) {
+        direction = DOWN;
+        setDir(0, 1);
+    }
+    else if (key == OF_KEY_LEFT) {
+        direction = LEFT;
+        setDir(-1, 0);
+    }
+    else if (key == OF_KEY_RIGHT) {
+        direction = RIGHT;
+        setDir(1, 0);
+    }
     
+    std::cout << "direction: " << direction << std::endl;
 }
 
+void ofSnake::drawSnake() {
+    ofSetColor(colorIO);
+    float newSize = cellSize * 2;
+
+    ofPushMatrix(); // Aktuelle Transformation speichern
+    ofTranslate(myPos.x + cellSize / 2, myPos.y + cellSize / 2); // Ursprung zur Mitte der Zelle verschieben
+
+    // Winkel basierend auf der Richtung setzen
+    float angle = 0;
+    switch (direction) {
+    case UP:
+        angle = 0;
+        break;
+    case DOWN:
+        angle = 180;
+        break;
+    case LEFT:
+        angle = -90;
+        break;
+    case RIGHT:
+        angle = 90;
+        break;
+    }
+    ofRotateDeg(angle); // Drehe das Koordinatensystem
+
+    // Eckpunkte des Dreiecks relativ zur neuen Mitte berechnen
+    float x1 = 0;
+    float y1 = -newSize / 2;
+    float x2 = -newSize / 2;
+    float y2 = newSize / 2;
+    float x3 = newSize / 2;
+    float y3 = newSize / 2;
+
+    ofDrawTriangle(x1, y1, x2, y2, x3, y3); // Dreieck zeichnen
+
+    ofPopMatrix(); // Transformation wiederherstellen
+}
 
 void ofSnake::setDir(int x, int y) {
     

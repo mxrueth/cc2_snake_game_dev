@@ -23,6 +23,8 @@ class ofApp : public ofBaseApp{
 
 
 		void keyPressed(int key);
+
+		//ofSnake snake; // Instanz von ofSnake
 		
     ofSnake mySnake{};
     ofFood myFood{};
