@@ -37,9 +37,27 @@ void ofSnake::update() {
 
 void ofSnake::draw() {
     ofSetColor(color);
-    for (auto& segment : body) {
-        ofDrawRectangle(segment.x, segment.y, cellSize, cellSize);
+    int newSize = cellSize * 1.5;
+
+    //for (auto& segment : body) {
+        //ofDrawRectangle(segment.x, segment.y, cellSize, cellSize);
+    //}
+
+    for (auto it = body.begin() + 1; it != body.end(); ++it) {
+        ofDrawRectangle(it->x, it->y, cellSize, cellSize);
     }
+
+
+    ofPushMatrix();
+    ofTranslate(body[0].x + cellSize / 2, body[0].y + cellSize / 2);
+    ofRotateDeg(snakeAngle);
+    float x1 = 0;
+    float y1 = -newSize / 2;    float x2 = -newSize / 2;
+    float y2 = newSize / 2;    float x3 = newSize / 2;
+    float y3 = newSize / 2;
+    ofDrawTriangle(x1, y1, x2, y2, x3, y3); // Dreieck zeichnen
+    ofPopMatrix(); // Transformation wiederherstellen
+
 }
 
 ofPoint ofSnake::getPosHead() {
@@ -78,3 +96,11 @@ float ofSnake::getUpdateInterval() const {
 void ofSnake::calculateUpdateInterval() {
     updateInterval = gameSpeed * exp(-gameSpeed * body.size()); // Exponential decrease, adjust the factor for desired speed
 }
+
+
+
+void ofSnake::setAngle(int angle) {
+    snakeAngle = angle; 
+}
+
+

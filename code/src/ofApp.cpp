@@ -129,15 +129,22 @@ void ofApp::keyPressed(int key){
 
 	case OF_KEY_LEFT: // left
 		snake.setDir(-1, 0);
+        snake.setAngle(-90);
 		break;
 	case OF_KEY_RIGHT: // right
 		snake.setDir(1, 0);
+        snake.setAngle(90);
+
 		break;
 	case OF_KEY_UP: // up
 		snake.setDir(0, -1);
+        snake.setAngle(0);
+
 		break;
 	case OF_KEY_DOWN: // down
 		snake.setDir(0, 1);
+        snake.setAngle(180);
+
 		break;
     case OF_KEY_RETURN: // Cheat to trigger vfx
         vfxDraw(snake.getPosHead());

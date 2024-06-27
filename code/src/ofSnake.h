@@ -29,12 +29,17 @@ public:
     vector<ofPoint> body;
     
 
-    private:
+    void setAngle(int angle);
 
+    private:
+    
+        int snakeAngle = 0;
     ofPoint direction;
     ofPoint lastTail;
     float lastUpdateTime;
     float updateInterval;
+
+    
 
 
 };
