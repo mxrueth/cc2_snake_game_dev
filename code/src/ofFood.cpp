@@ -15,6 +15,10 @@ ofFood::ofFood()
 
 
 
+ofFood::ofFood(glm::vec3 _color, int _scl)
+    :scl{ _scl }, color{_color }{
+
+}
 
 
 

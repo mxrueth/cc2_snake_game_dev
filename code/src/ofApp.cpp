@@ -174,6 +174,7 @@ void ofApp::spawnFood(float speed) {
     }
 
     lastUpdateTime = currentTime;
+    ofFood exp;
 
     float r = ofRandom(1);
     if (r > 0.666) {

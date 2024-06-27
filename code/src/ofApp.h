@@ -47,6 +47,9 @@ class ofApp : public ofBaseApp{
 
         vector<ofFood*> foods;
 
+        vector<ofFood> foods2; 
+
+
         bool gameOver;
 		bool collectedFood;
 		int score;

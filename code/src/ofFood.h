@@ -8,6 +8,7 @@ class ofFood {
 public:
 
     ofFood();
+    ofFood(glm::vec3 _color, int _scl);
 
     virtual ~ofFood() = default;
 
@@ -19,13 +20,13 @@ public:
     glm::vec2 getPosition();
   
 protected:
-    glm::vec3 color;
+    
     glm::vec2 pos;
     int scl;
 
 private:
-
-
+    glm::vec3 color;
+    
 
 
 

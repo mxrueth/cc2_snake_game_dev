@@ -33,7 +33,7 @@ public:
 
     private:
     
-        int snakeAngle = 0;
+    int snakeAngle = 0;
     ofPoint direction;
     ofPoint lastTail;
     float lastUpdateTime;

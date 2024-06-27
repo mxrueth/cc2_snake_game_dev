@@ -3,8 +3,11 @@
 
 ofApple::ofApple()
 {
-	scl = 50;
-	color = { 0,250,50 };
+
+	//ofFood(glm::vec3(0,250,50), 50);
+	//scl = 50;
+	
+	ofFood({ 0,250,50 }, 50);
 
 	pickLocation();
 }

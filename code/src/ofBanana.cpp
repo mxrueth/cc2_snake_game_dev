@@ -3,9 +3,7 @@
 
 ofBanana::ofBanana()
 {
-	scl = 50;
-	color = { 255,255,0 };
-
+	ofFood({255,250,0 }, 50);
 	pickLocation();
 }
 
